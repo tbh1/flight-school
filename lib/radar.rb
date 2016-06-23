@@ -8,7 +8,7 @@ class Radar
   class NoSuchAirport < RuntimeError; end
 
   def self.status_for(airport)
-    url = URI.parse("http://services.faa.gov/airport/status/#{airport}")
+    uri = URI.parse("http://services.faa.gov/airport/status/#{airport}")
     req = Net::HTTP::Get.new(uri)
     req["Accept"] = "application/json"
     res = Net::HTTP.start(uri.hostname, uri.port) do |http|
